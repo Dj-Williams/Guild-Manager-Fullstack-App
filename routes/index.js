@@ -10,8 +10,8 @@ const questController = require('../controllers/questController')
 router.get('/api/quests', questController.index)
 router.post('/api/quests/', questController.create)
 router.get('/api/quests/:questId', questController.show)
-// router.patch('/api/quests/:questId', questController.update)
-// router.delete('/api/quests/:questId', questController.delete)
+router.patch('/api/quests/:questId', questController.update)
+router.delete('/api/quests/:questId', questController.delete)
 
 // // This is the Adventurer router tree.
 // router.get('/api/quests/:questId/adventurers', adventurerController.index)
