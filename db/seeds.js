@@ -30,6 +30,7 @@ const grail = new Quest({
 })
 
 Quest.remove({})
+    .then(() => Adventurer.remove({}))
     .then(() => Adventurer.insertMany([lance, luna, lakeisha]))
     .then(() => grail.save())
     .then(() => console.log('Seeds have been successfully Saved!'))
