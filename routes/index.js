@@ -4,13 +4,20 @@ const router = express.Router()
 
 // Importing the controllers to be routed here. 
 const questController = require('../controllers/questController') 
-const adventurerController = require('../controllers/adventurerController')
+// const adventurerController = require('../controllers/adventurerController')
 
 // This is the Quest router tree. 
-router.get('/api/quests', userController.index)
-router.post('/api/quests/', userController.create)
-router.get('/api/quests/:questId', userController.show)
-router.patch('/api/quests/:questId', userController.update)
-router.delete('/api/quests/:questId', userController.delete)
+router.get('/api/quests', questController.index)
+// router.post('/api/quests/', questController.create)
+// router.get('/api/quests/:questId', questController.show)
+// router.patch('/api/quests/:questId', questController.update)
+// router.delete('/api/quests/:questId', questController.delete)
+
+// // This is the Adventurer router tree.
+// router.get('/api/quests/:questId/adventurers', adventurerController.index)
+// router.post('/api/adventurers/:adventurerId', adventurerController.create)
+// router.get('/api/adventurers/:adventurerId', adventurerController.show)
+// router.patch('/api/adventurers/:adventurerId', adventurerController.update)
+// router.delete('/api/quests/:questId/adventurers', adventurerController.delete)
 
 module.exports = router
