@@ -8,8 +8,8 @@ const questController = require('../controllers/questController')
 
 // This is the Quest router tree. 
 router.get('/api/quests', questController.index)
-// router.post('/api/quests/', questController.create)
-// router.get('/api/quests/:questId', questController.show)
+router.post('/api/quests/', questController.create)
+router.get('/api/quests/:questId', questController.show)
 // router.patch('/api/quests/:questId', questController.update)
 // router.delete('/api/quests/:questId', questController.delete)
 
