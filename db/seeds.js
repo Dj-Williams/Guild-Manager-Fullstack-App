@@ -29,7 +29,7 @@ const grail = new Quest({
 })
 
 Quest.remove({})
-    .then(() => Quest.insertMany([lance, luna, lakeisha]))
+    .then(() => Adventurer.insertMany([lance, luna, lakeisha]))
     .then(() => grail.save())
     .then(() => console.log('Seeds have been successfully Saved!'))
     .then(() => mongoose.connection.close())
