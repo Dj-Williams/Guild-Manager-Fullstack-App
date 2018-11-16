@@ -25,7 +25,8 @@ const lakeisha = new Adventurer({
 
 const grail = new Quest({
     questName: 'Purify the Holy Grailands',
-    description: 'Demons have raided the Holy Grailands with intent to destroy all the temples that keep the Mammon portal closed. The Hestian Church have come to our guild and are offering a hefty sum if we are able to drive the demonic offensive front back to Tartarus.'
+    description: 'Demons have raided the Holy Grailands with intent to destroy all the temples that keep the Mammon portal closed. The Hestian Church have come to our guild and are offering a hefty sum if we are able to drive the demonic offensive front back to Tartarus.',
+    adventurers: [lance, luna, lakeisha]
 })
 
 Quest.remove({})
