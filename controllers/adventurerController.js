@@ -9,13 +9,6 @@ const adventurerController = {
                 res.send(quest.adventurers)
             })
     },
-    show: (req, res) => {
-        var adventurerId = req.params.adventurerId
-        Adventurer.findById(adventurerId)
-            .then((adventurer) => {
-                res.send(adventurer)
-            })
-    },
     create: (req, res) => {
         let questId = req.params.questId
         Quest.findById(questId)
@@ -31,7 +24,21 @@ const adventurerController = {
                         res.send(newAdventurer)
                     })
             })
-    }
+    },
+    show: (req, res) => {
+        var adventurerId = req.params.adventurerId
+        Adventurer.findById(adventurerId)
+            .then((adventurer) => {
+                res.send(adventurer)
+            })
+    },
+    delete: (req, res) => {
+        var adventurerId = req.params.adventurerId
+        Adventurer.findByIdAndDelete(adventurerId)
+            .then(() => {
+                res.send('This guy has been deleted boi!')
+            })
+    },
 }
 
 module.exports = adventurerController
