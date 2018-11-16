@@ -39,6 +39,14 @@ const adventurerController = {
                 res.send('This guy has been deleted boi!')
             })
     },
+    update: (req, res) => {
+        var adventurerId = req.params.adventurerId
+        Adventurer.findByIdAndUpdate(adventurerId, req.body, {new: true})
+            .then((updateAdventurer) => {
+                updateAdventurer.save()
+                res.send(updateAdventurer)
+            })
+    }
 }
 
 module.exports = adventurerController
