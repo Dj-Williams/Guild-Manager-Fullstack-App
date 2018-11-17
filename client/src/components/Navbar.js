@@ -20,7 +20,7 @@ class Navbar extends Component {
 </li>
 
 <li>
-    <Link to='/'>Quests</Link>
+    <Link to='/quests'>Quests</Link>
 </li>
 
 </ul>

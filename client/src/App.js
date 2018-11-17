@@ -1,18 +1,37 @@
-// This is the entire thing! All the routes with the components that matter n stuff.
-
-import './App.css';
+// The react router is strictly concerned about which components will be shown in the dom. 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from 
+import Navbar from './components/Navbar';
+import QuestPage from './components/QuestPage'
+import SplashPage from './components/SplashPage';
+import RosterPage from './components/RosterPage';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
 
-      <h1>WELCOME TO THE 3rd PHASE OF YOUR APP! GET IT IN!</h1>
+        {/* This holds all of our routing stuff. */}
+        <Router>
 
-      <h3>Next we're going to gut all this other stuff outta here, and get into the nitty gritty of making that custom feel...feel real!</h3>
+          <div>
+
+            {/* ↓ Throwing my Navbar joint in there for good measure! */}
+            <Navbar />
+
+            {/* ↓ This ensures that we get the route that we are asking for. */}
+            <Switch>
+                
+              <Route exact path="/quests" component={QuestPage} />
+
+              <Route exact path="/quests/:questId" component={RosterPage} />
+
+              <Route exact path="/" component={SplashPage} />
+
+            </Switch>
+          </div>
+        </Router>
+
       </div>
     );
   }
