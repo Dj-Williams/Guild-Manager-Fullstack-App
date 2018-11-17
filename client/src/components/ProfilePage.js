@@ -4,7 +4,7 @@ class ProfilePage extends Component {
     render() {
         return (
             <div>
-                <h1>Yo from the profile page!</h1>
+                <h1>Yo from the Adventurer profile page!</h1>
             </div>
         );
     }

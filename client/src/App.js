@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import QuestPage from './components/QuestPage'
 import SplashPage from './components/SplashPage';
 import RosterPage from './components/RosterPage';
+import ProfilePage from './components/ProfilePage';
 
 class App extends Component {
   render() {
@@ -25,6 +26,8 @@ class App extends Component {
               <Route exact path="/quests" component={QuestPage} />
 
               <Route exact path="/quests/:questId" component={RosterPage} />
+
+              <Route exact path="/adventurers/:adventurerId" component={ProfilePage} />
 
               <Route exact path="/" component={SplashPage} />
 
