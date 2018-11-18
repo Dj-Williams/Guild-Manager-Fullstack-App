@@ -18,6 +18,6 @@ router.get('/api/quests/:questId/adventurer', adventurerController.index)
 router.post('/api/quests/:questId/adventurers', adventurerController.create)
 router.patch('/api/quests/:questId/adventurers/:adventurerId', adventurerController.update)
 router.delete('/api/quests/:questId/adventurers/:adventurerId', adventurerController.delete)
-router.get('/api/quests/:questId/adventurers/:adventurerId', adventurerController.show)
+router.get('/api/adventurers/:adventurerId', adventurerController.show)
 
 module.exports = router
