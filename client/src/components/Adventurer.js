@@ -19,17 +19,18 @@ class Adventurer extends Component {
             biography: this.props.adventurer.biography,
         }
         this.setState(soul)
+        console.log(soul)
     }
 
-
+    
 
 
     render() {
         return (
             <div>
             
-            <h1>Name: {this.props.adventurer}</h1>
-
+            <h1>Name: {this.props.adventurers}</h1>
+            
             </div>
         );
     }

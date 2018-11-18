@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import styled from 'styled-components'
-import Adventurer from './Adventurer'
+
 
 // Just a lil style so I see what I'm working with!
 const AdventurerContainer = styled.div`
@@ -43,36 +43,52 @@ class RosterPage extends Component {
 
     // Retrieve all the data upon pageload.
     componentDidMount() {
+        this.getAllQuests()
         this.getAllAdventurers()
-        // this.getAllAdventurers()
-
     }
 
-    getAllAdventurers = () => {
+    getAllQuests = () => {
         // Making a request to the database to get all the quest data.
         const questId = this.props.match.params.questId
         axios.get(`/api/quests/${questId}`).then((response) => {
-            console.log(response)
             this.setState({
-                quest: response.data,
-                adventurers: response.data.adventurers
+                quest: response.data
             })
         })
     }
 
+    getAllAdventurers = () => {
+        const questId = this.props.match.params.questId
+        axios.get(`/api/quests/${questId}/adventurer`).then((response) => {
+            this.setState({
+                adventurers: response.data
+            })
+        })
+    }
+
+    
+
 
     render() {
+
         return (
 
             <div>
 
                 <h1>The {this.state.quest.questName} Mission Roster Page!</h1>
 
-
+                
 
                 {this.state.adventurers.map((adventurer) => (
+                    
 
-                    <Adventurer key={adventurer.id} adventurer={adventurer} />
+                    <AdventurerStyle>
+
+                    <h1>{adventurer.name}</h1>
+
+                    <h4>{adventurer.biography}</h4>
+                    
+                    </AdventurerStyle>
 
                 ))}
 

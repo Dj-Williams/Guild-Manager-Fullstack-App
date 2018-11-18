@@ -7,23 +7,23 @@ class Navbar extends Component {
             <div>
                 <ul>
 
-<li>
-    <Link to='#'>Dummy Link</Link>
-</li>
+                    <li>
+                        <Link to='#'>Dummy Link</Link>
+                    </li>
 
-<li>
-    <Link to='#'>Dummy Link</Link>
-</li>
+                    <li>
+                        <Link to='#'>Dummy Link</Link>
+                    </li>
 
-<li>
-    <Link to='#'>About Page</Link>
-</li>
+                    <li>
+                        <Link to='#'>About Page</Link>
+                    </li>
 
-<li>
-    <Link to='/quests'>Quests</Link>
-</li>
+                    <li>
+                        <Link to='/quests'>Quests</Link>
+                    </li>
 
-</ul>
+                </ul>
             </div>
         );
     }

@@ -14,7 +14,7 @@ router.patch('/api/quests/:questId', questController.update)
 router.delete('/api/quests/:questId', questController.delete)
 
 // // This is the Adventurer router tree.
-router.get('/api/quests/:questId/adventurers', adventurerController.index)
+router.get('/api/quests/:questId/adventurer', adventurerController.index)
 router.post('/api/quests/:questId/adventurers', adventurerController.create)
 router.patch('/api/quests/:questId/adventurers/:adventurerId', adventurerController.update)
 router.delete('/api/quests/:questId/adventurers/:adventurerId', adventurerController.delete)
