@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 
 // Just a lil style so I see what I'm working with!
-const AdventurerContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    border: 2px dotted green;
-`
 
 const AdventurerStyle = styled.div`
     display: flex;
@@ -21,19 +13,10 @@ const AdventurerStyle = styled.div`
     justify-content: space-between;
     text-align: center;
     width: 500px;
-    height: 300px;
+    height: 500px;
     background: #f1faee;
     margin: 10px 10px;
     border: 1px solid black;
-`
-
-const AdventurerTitleStyle = styled.div`
-    padding-bottom: 25px;
-    border: 1px solid black;
-    padding-top: 30px;
-    margin-bottom: 50px;
-    background-color: black;
-    color: white;
 `
 class RosterPage extends Component {
     state = {
@@ -66,8 +49,6 @@ class RosterPage extends Component {
         })
     }
 
-    
-
 
     render() {
 
@@ -77,19 +58,23 @@ class RosterPage extends Component {
 
                 <h1>The {this.state.quest.questName} Mission Roster Page!</h1>
 
-                
+
 
                 {this.state.adventurers.map((adventurer) => (
                     
 
                     <AdventurerStyle>
+                        <Link to={`/adventurers/${adventurer._id}`}>
+                        <img src={adventurer.image} alt="" />
 
-                    <h1>{adventurer.name}</h1>
+                        <h1>{adventurer.name}</h1>
 
-                    <h4>{adventurer.biography}</h4>
-                    
+                        {adventurer.classSpecialization}
+
+                        <h4>{adventurer.biography}</h4>
+                        </Link>
                     </AdventurerStyle>
-
+                    
                 ))}
 
             </div>
