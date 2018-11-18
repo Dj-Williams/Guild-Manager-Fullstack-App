@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Adventurer from './Adventurer'
 
 // Just a lil style so I see what I'm working with!
 const AdventurerContainer = styled.div`
@@ -43,42 +43,41 @@ class RosterPage extends Component {
 
     // Retrieve all the data upon pageload.
     componentDidMount() {
+        this.getAllAdventurers()
+        // this.getAllAdventurers()
+
+    }
+
+    getAllAdventurers = () => {
         // Making a request to the database to get all the quest data.
         const questId = this.props.match.params.questId
         axios.get(`/api/quests/${questId}`).then((response) => {
-            this.setState({ 
-                quest: response.data, 
-                adventurers: response.data.adventurers})
+            console.log(response)
+            this.setState({
+                quest: response.data,
+                adventurers: response.data.adventurers
+            })
         })
     }
 
+
     render() {
         return (
-            <AdventurerContainer>
-                <div>
 
-                    <h1>The {this.state.quest.questName} Mission Roster Page!</h1>
-                    <AdventurerStyle>
-                        {this.state.adventurers.map((adventurer) => (
-                            <adventurer key={adventurer._id}>
+            <div>
 
-                                <Link to={`/adventurers/${adventurer._id}`}>
-                                <AdventurerTitleStyle>
-                                    {adventurer.name}
-                                </AdventurerTitleStyle>
-                                </Link>
-                                    <div>
-                                        
-                                    </div>
+                <h1>The {this.state.quest.questName} Mission Roster Page!</h1>
 
-                                    {adventurer.description}
-                                
 
-                            </adventurer>
-                        ))}
-                    </AdventurerStyle>
-                </div>
-            </AdventurerContainer>
+
+                {this.state.adventurers.map((adventurer) => (
+
+                    <Adventurer key={adventurer.id} adventurer={adventurer} />
+
+                ))}
+
+            </div>
+
         );
     }
 }
