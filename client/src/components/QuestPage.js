@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import QuestForm from './QuestForm'
 
 
 // Just a lil style so I see what I'm working with!
@@ -37,6 +38,11 @@ const QuestTitleStyle = styled.div`
     color: white;
 `
 
+const NewQuestButton = styled.button`
+    background: apricot;
+    color: black;
+    padding: 7.5px 5px;
+`
 
 class QuestPage extends Component {
     state = {
@@ -61,26 +67,28 @@ class QuestPage extends Component {
                 <div>
 
                     <h1>It's Your Boi the Quests Page!</h1>
-                    <QuestStyle>
+
+                    {/* <QuestStyle> */}
                         {this.state.quests.map((quest) => (
+
                             <div key={quest._id}>
 
                                 <Link to={`/quests/${quest._id}`}>
-                                <QuestTitleStyle>
+                                {/* <QuestTitleStyle> */}
                                     {quest.questName}
-                                </QuestTitleStyle>
+                                {/* </QuestTitleStyle> */}
                                 </Link>
-                                    <div>
-                                        
-                                    </div>
 
                                     {quest.description}
-                                
-
+    
                             </div>
                         ))}
-                    </QuestStyle>
+                    {/* </QuestStyle> */}
+
                 </div>
+
+            <QuestForm {...this.props}/>
+
             </QuestContainer>
         );
     }

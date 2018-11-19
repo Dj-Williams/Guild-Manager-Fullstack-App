@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 
 // Just a lil style so I see what I'm working with!
-
 const AdventurerStyle = styled.div`
     display: flex;
     flex-direction: column;
@@ -24,12 +23,8 @@ class RosterPage extends Component {
         adventurers: [],
     }
 
-    // Retrieve all the data upon pageload.
-    componentDidMount() {
-        this.getAllQuests()
-        this.getAllAdventurers()
-    }
-
+    
+    // This function retrives all of the quests information and throws it in state.
     getAllQuests = () => {
         // Making a request to the database to get all the quest data.
         const questId = this.props.match.params.questId
@@ -40,6 +35,7 @@ class RosterPage extends Component {
         })
     }
 
+    // This function retrives all of the adventurers information and throws it in state.
     getAllAdventurers = () => {
         const questId = this.props.match.params.questId
         axios.get(`/api/quests/${questId}/adventurer`).then((response) => {
@@ -48,8 +44,13 @@ class RosterPage extends Component {
             })
         })
     }
-
-
+    
+    // Retrieve all the data upon pageload.
+    componentDidMount() {
+        this.getAllQuests()
+        this.getAllAdventurers()
+    }
+    
     render() {
 
         return (
@@ -62,7 +63,6 @@ class RosterPage extends Component {
 
                 {this.state.adventurers.map((adventurer) => (
                     
-
                     <AdventurerStyle>
                         <Link to={`/adventurers/${adventurer._id}`}>
                         <img src={adventurer.image} alt="" />
