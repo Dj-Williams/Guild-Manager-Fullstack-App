@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import AdventurerForm from './AdventurerForm';
 
+const NewAdventurerButton = styled.button`
+    background: royalblue;
+    color: black;
+    padding: 7.5px 5px;
+`
 
 // Just a lil style so I see what I'm working with!
 const AdventurerStyle = styled.div`
@@ -76,6 +82,11 @@ class RosterPage extends Component {
                     </AdventurerStyle>
                     
                 ))}
+
+                {/* The Create Adventurer Form */}
+            <NewAdventurerButton>
+            <AdventurerForm {...this.props}/>
+                </NewAdventurerButton>
 
             </div>
 

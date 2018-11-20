@@ -5,9 +5,10 @@ import styled from 'styled-components'
 import QuestForm from './QuestForm'
 
 
+
 // Just a lil style so I see what I'm working with!
 const QuestContainer = styled.div`
-    display: flex;
+    display: flex
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -22,14 +23,15 @@ const QuestStyle = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     text-align: center;
-    width: 500px;
-    height: 300px;
+    width: 100vw;
+    height: 25v;
     background: #f1faee;
     margin: 10px 10px;
     border: 1px solid black;
 `
 
 const QuestTitleStyle = styled.div`
+    display: inline-flex;
     padding-bottom: 25px;
     border: 1px solid black;
     padding-top: 30px;
@@ -39,7 +41,19 @@ const QuestTitleStyle = styled.div`
 `
 
 const NewQuestButton = styled.button`
-    background: apricot;
+    background: royalblue;
+    color: black;
+    padding: 7.5px 5px;
+`
+
+const DeleteButton = styled.button`
+    background: goldenrod;
+    color: black;
+    padding: 7.5px 5px;
+`
+
+const EditButton = styled.button`
+    background: grey;
     color: black;
     padding: 7.5px 5px;
 `
@@ -61,33 +75,60 @@ class QuestPage extends Component {
         this.fetchAllQuests()
     }
 
+    // This will handle the deleting of a single Quest
+    handleDelete = (questId) => {
+        //const questId = this.props.match.params.questId
+        axios.delete(`/api/quests/${questId}`).then((res) => {
+            // I call this fetch all quests so that I can see the delete happening in real time. Erase one off the list and return the list again...basically. 
+            this.fetchAllQuests()
+        })
+    }
+
     render() {
+        
         return (
             <QuestContainer>
                 <div>
 
                     <h1>It's Your Boi the Quests Page!</h1>
 
-                    {/* <QuestStyle> */}
+                    
                         {this.state.quests.map((quest) => (
+                        <QuestStyle>
 
                             <div key={quest._id}>
 
                                 <Link to={`/quests/${quest._id}`}>
-                                {/* <QuestTitleStyle> */}
+                                <QuestTitleStyle>
                                     {quest.questName}
-                                {/* </QuestTitleStyle> */}
+                                </QuestTitleStyle>
                                 </Link>
 
                                     {quest.description}
-    
+
+                                {/* ↓ Edit Quest Button ↓ */}
+                                <Link to={`/quests/edit/${quest._id}`}>
+                                {/* The onclick function is a synthetic event, I'm passing the quest Id through because I dont need to pass the params. questid has already been defined.  */}
+                                <EditButton>Quest Editor</EditButton>
+                                </Link>
+                                {/* ↑ Edit Quest Button ↑ */}
+
+                                {/* ↓ Delete Button ↓ */}
+                                <Link to={`/quests`}>
+                                {/* The onclick function is a synthetic event, I'm passing the quest Id through because I dont need to pass the params. questid has already been defined.  */}
+                                <DeleteButton onClick={()=> this.handleDelete(quest._id)}>Delete this Quest!</DeleteButton>
+                                </Link>
+                                {/* ↑ Delete Button ↑ */}
+
                             </div>
+                        </QuestStyle>
                         ))}
-                    {/* </QuestStyle> */}
 
                 </div>
-
+                {/* The Create Quest Form */}
+                <NewQuestButton>
             <QuestForm {...this.props}/>
+                </NewQuestButton>
 
             </QuestContainer>
         );

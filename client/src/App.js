@@ -6,11 +6,12 @@ import QuestPage from './components/QuestPage'
 import SplashPage from './components/SplashPage';
 import RosterPage from './components/RosterPage';
 import ProfilePage from './components/ProfilePage';
+import QuestEditForm from './components/QuestEditForm';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div> 
 
         {/* This holds all of our routing stuff. */}
         <Router>
@@ -24,6 +25,8 @@ class App extends Component {
             <Switch>
                 
               <Route exact path="/quests" component={QuestPage} />
+
+              <Route exact path="/quests/edit/:questId" component={QuestEditForm} />
 
               <Route exact path="/quests/:questId" component={RosterPage} />
 
