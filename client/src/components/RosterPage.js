@@ -23,6 +23,12 @@ const AdventurerStyle = styled.div`
     margin: 10px 10px;
     border: 1px solid black;
 `
+
+const DeleteButton = styled.button`
+    background: goldenrod;
+    color: black;
+    padding: 7.5px 5px;
+`
 class RosterPage extends Component {
     state = {
         quest: {},
@@ -50,6 +56,15 @@ class RosterPage extends Component {
             })
         })
     }
+
+    // This will handle the deleting of a single Adventurer
+    handleDelete = (adventurerId) => {
+        const questId = this.props.match.params.questId
+        axios.delete(`/api/quests/${questId}/adventurers/${adventurerId}`).then((res) => {
+            // I call this fetch all quests so that I can see the delete happening in real time. Erase one off the list and return the list again...basically. 
+            this.getAllAdventurers()
+        })
+    }
     
     // Retrieve all the data upon pageload.
     componentDidMount() {
@@ -60,7 +75,6 @@ class RosterPage extends Component {
     render() {
 
         return (
-
             <div>
 
                 <h1>The {this.state.quest.questName} Mission Roster Page!</h1>
@@ -68,6 +82,7 @@ class RosterPage extends Component {
 
 
                 {this.state.adventurers.map((adventurer) => (
+            
                     
                     <AdventurerStyle>
                         <Link to={`/adventurers/${adventurer._id}`}>
@@ -79,7 +94,14 @@ class RosterPage extends Component {
 
                         <h4>{adventurer.biography}</h4>
                         </Link>
+
+                        <Link to={`/quests`}>
+                                {/* The onclick function is a synthetic event, I'm passing the quest Id through because I dont need to pass the params. questid has already been defined.  */}
+                                <DeleteButton onClick={()=> this.handleDelete(adventurer._id)}>Delete this Adventurer!</DeleteButton>
+                                </Link>
+
                     </AdventurerStyle>
+                    
                     
                 ))}
 

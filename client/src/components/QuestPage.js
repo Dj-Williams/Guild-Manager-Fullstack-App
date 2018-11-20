@@ -70,11 +70,7 @@ class QuestPage extends Component {
         })
     }
 
-    // Retrieve all the data upon pageload.
-    componentDidMount() {
-        this.fetchAllQuests()
-    }
-
+    
     // This will handle the deleting of a single Quest
     handleDelete = (questId) => {
         //const questId = this.props.match.params.questId
@@ -83,7 +79,12 @@ class QuestPage extends Component {
             this.fetchAllQuests()
         })
     }
-
+    
+    // Retrieve all the data upon pageload.
+    componentDidMount() {
+        this.fetchAllQuests()
+    }
+    
     render() {
         
         return (

@@ -27,7 +27,7 @@ class AdventurerForm extends Component {
             .then(res => {
                 this.props.history.push(`/quests/${questId}`)
             })
-        event.preventDefault()
+        // event.preventDefault()
     }
 
     render() {
@@ -53,7 +53,7 @@ class AdventurerForm extends Component {
                     </div>
 
                     <div>
-                        <label htmlFor="image"> Description </label>
+                        <label htmlFor="image"> Image Url </label>
                         <input onChange={this.handleChange} value={this.state.newAdventurer.image} type="text" name="image" />
                     </div>
 
