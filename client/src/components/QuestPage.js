@@ -108,7 +108,7 @@ class QuestPage extends Component {
                                     {quest.description}
 
                                 {/* ↓ Edit Quest Button ↓ */}
-                                <Link to={`/quests/edit/${quest._id}`}>
+                                <Link to={`api/quests/${quest._id}`}>
                                 {/* The onclick function is a synthetic event, I'm passing the quest Id through because I dont need to pass the params. questid has already been defined.  */}
                                 <EditButton>Quest Editor</EditButton>
                                 </Link>

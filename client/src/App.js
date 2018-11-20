@@ -26,7 +26,7 @@ class App extends Component {
                 
               <Route exact path="/quests" component={QuestPage} />
 
-              <Route exact path="/quests/edit/:questId" component={QuestEditForm} />
+              <Route exact path="/api/quests/:questId" component={QuestEditForm} />
 
               <Route exact path="/quests/:questId" component={RosterPage} />
 

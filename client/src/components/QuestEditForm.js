@@ -1,32 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 class QuestEditForm extends Component {
     state = {
-        quests: [],
         newQuest: {
             questName: '',
             description: ''
         }
     }
 
-    componentWillMount(){
-        this.getQuestInfo()
-    }
-
-
     getQuestInfo = () => {
         let questId = this.props.match.params.questId
         axios.get(`api/quests/${questId}`)
         .then(res => { 
             this.setState({
-                questName: res.data.newQuest.questName,
-                description: res.data.newQuest.description
+                questName: res.data.questName,
+                description: res.data.description
             })
         })
     }
-
+    
     // This handles the input fields of the form, by allowing the user to type things in and have their inputs recognized and saved. 
     handleChange = (event) => {
         // This clones the old state into a new temporary state of newQuest
@@ -35,13 +30,17 @@ class QuestEditForm extends Component {
         this.setState({ newQuest: updatedNewQuest })
     }
     // This handles the creation of a new quest w/ the post command. 
-    handleSubmit = (event) => {
-        axios.post('/api/quests', this.state.newQuest).then(res => {
-            this.props.history.push(`/quests/${res.data._id}`)
+    handleUpdate = (event) => {
+        let questId = this.props.match.params.questId
+        axios.patch(`/api/quests/${questId}`, this.state.newQuest).then(res => {
+            this.props.history.push(`/quests/${questId}/${res.data._id}`)
         })
         event.preventDefault()
     }
-
+    
+    componentWillMount(){
+        this.getQuestInfo()
+    }
 
     render() {
         return (
@@ -50,10 +49,10 @@ class QuestEditForm extends Component {
                 <h1>Quest Editor!</h1>
 
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleUpdate}>
 
                     <div>
-                        <label htmlFor="username">Quest Name</label>
+                        <label htmlFor="questName">Quest Name</label>
                         <input onChange={this.handleChange} value={this.state.questName} type="text" name="questName" />
                     </div>
 
@@ -61,8 +60,9 @@ class QuestEditForm extends Component {
                         <label htmlFor="description"> Description </label>
                         <input onChange={this.handleChange} value={this.state.description} type="text" name="description" />
                     </div>
-
-                <button type="submit">Create Quest</button>                
+                
+                <Link to={`/quests`}>
+                <button type="submit">Submit Edits</button>         </Link> 
 
                 </form>
 
