@@ -19,7 +19,7 @@ class App extends Component {
         <Router>
 
           <div>
-
+            <Navbar/>
             {/* ↓ This ensures that we get the route that we are asking for. */}
             <Switch>
                 

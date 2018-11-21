@@ -5,16 +5,7 @@ class Navbar extends Component {
     render() {
         return (
             <div>
-                <ul>
-
-                    <li>
-                        <Link to='#'>Dummy Link</Link>
-                    </li>
-
-                    <li>
-                        <Link to='#'>Dummy Link</Link>
-                    </li>
-
+                <ul className="navbar">
                     <li>
                         <Link to='#'>About Page</Link>
                     </li>

@@ -25,14 +25,15 @@ const QuestStyle = styled.div`
     justify-content: space-between;
     text-align: center;
     width: 100vw;
-    height: 25v;
-    background: #f1faee;
+    height: 50vw;
+    background-color: rgba(0, 0, 0, 0.015);
     margin: 10px 10px;
     border: 1px solid black;
 `
 
 const QuestTitleStyle = styled.div`
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     padding-bottom: 25px;
     border: 1px solid black;
     padding-top: 30px;
@@ -42,7 +43,7 @@ const QuestTitleStyle = styled.div`
 `
 
 const NewQuestButton = styled.button`
-    background: royalblue;
+    background: grey;
     color: black;
     padding: 7.5px 5px;
 `
@@ -89,10 +90,10 @@ class QuestPage extends Component {
     render() {
         
         return (
-            <QuestContainer>
+            <div className="bigQuestContainer" >
                 <div>
 
-                    <h1>It's Your Boi the Quests Page!</h1>
+                    <h1 className="questPageTitle">These are the active quests below, Guildmaster.</h1>
 
                     
                         {this.state.quests.map((quest) => (
@@ -106,7 +107,8 @@ class QuestPage extends Component {
                                 </QuestTitleStyle>
                                 </Link>
 
-                                    {quest.description}
+                                   <div className="questDescriptionStyle">{quest.description}
+                                   </div> 
 
                                 {/* ↓ Edit Quest Button ↓ */}
                                 <Link to={`api/quests/${quest._id}`}>
@@ -132,7 +134,8 @@ class QuestPage extends Component {
             <QuestForm {...this.props}/>
                 </NewQuestButton>
 
-            </QuestContainer>
+            
+            </div>
         );
     }
 }

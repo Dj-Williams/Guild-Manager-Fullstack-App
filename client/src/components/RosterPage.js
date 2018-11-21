@@ -23,6 +23,7 @@ const AdventurerStyle = styled.div`
     background: #f1faee;
     margin: 10px 10px;
     border: 1px solid black;
+    
 `
 
 const DeleteButton = styled.button`
@@ -79,7 +80,6 @@ class RosterPage extends Component {
             <div>
 
                 {/* ↓ Throwing my Navbar joint in there for good measure! */}
-                <Navbar />
 
                 <h1>The {this.state.quest.questName} Mission Roster Page!</h1>
 
