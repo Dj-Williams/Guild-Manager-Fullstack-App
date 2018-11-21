@@ -27,9 +27,9 @@ class AdventurerEditForm extends Component {
     }
 
     // This handles the input fields of the form, by allowing the user to type things in and have their inputs recognized and saved. 
-    handleChange = () => {
+    handleChange = (event) => {
         // This clones the old state into a new temporary state of newQuest
-        const newAdventurer = {...this.state.newAdventurer}
+        const updatedNewAdventurer = {...this.state.newAdventurer}
         updatedNewAdventurer[event.target.name] = event.target.value
         this.setState({ newAdventurer: updatedNewAdventurer })
     }

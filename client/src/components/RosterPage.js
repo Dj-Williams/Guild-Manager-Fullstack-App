@@ -93,11 +93,12 @@ class RosterPage extends Component {
                             <img src={adventurer.image} alt="" />
 
                             <h1>{adventurer.name}</h1>
+                        </Link>
 
                             {adventurer.classSpecialization}
 
                             <h4>{adventurer.biography}</h4>
-                        </Link>
+                        
 
                         {/* ↓ Edit Adventurer Button ↓ */}
                         <Link to={`/api/edit/adventurers/${adventurer._id}`}>
