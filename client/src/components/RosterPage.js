@@ -3,6 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import AdventurerForm from './AdventurerForm';
+import Navbar from './Navbar';
 
 const NewAdventurerButton = styled.button`
     background: royalblue;
@@ -35,7 +36,7 @@ class RosterPage extends Component {
         adventurers: [],
     }
 
-    
+
     // This function retrives all of the quests information and throws it in state.
     getAllQuests = () => {
         // Making a request to the database to get all the quest data.
@@ -65,49 +66,59 @@ class RosterPage extends Component {
             this.getAllAdventurers()
         })
     }
-    
+
     // Retrieve all the data upon pageload.
     componentDidMount() {
         this.getAllQuests()
         this.getAllAdventurers()
     }
-    
+
     render() {
 
         return (
             <div>
+
+                {/* ↓ Throwing my Navbar joint in there for good measure! */}
+                <Navbar />
 
                 <h1>The {this.state.quest.questName} Mission Roster Page!</h1>
 
 
 
                 {this.state.adventurers.map((adventurer) => (
-            
-                    
+
+
                     <AdventurerStyle>
                         <Link to={`/adventurers/${adventurer._id}`}>
-                        <img src={adventurer.image} alt="" />
+                            <img src={adventurer.image} alt="" />
 
-                        <h1>{adventurer.name}</h1>
+                            <h1>{adventurer.name}</h1>
 
-                        {adventurer.classSpecialization}
+                            {adventurer.classSpecialization}
 
-                        <h4>{adventurer.biography}</h4>
+                            <h4>{adventurer.biography}</h4>
                         </Link>
 
+                        {/* ↓ Edit Adventurer Button ↓ */}
+                        <Link to={`/api/edit/adventurers/${adventurer._id}`}>
+                            
+                            <button>Adventurer Editor</button>
+                        </Link>
+                        {/* ↑ Edit Quest Button ↑ */}
+
                         <Link to={`/quests`}>
-                                {/* The onclick function is a synthetic event, I'm passing the quest Id through because I dont need to pass the params. questid has already been defined.  */}
-                                <DeleteButton onClick={()=> this.handleDelete(adventurer._id)}>Delete this Adventurer!</DeleteButton>
-                                </Link>
+                            {/* The onclick function is a synthetic event, I'm passing the quest Id through because I dont need to pass the params. questid has already been defined.  */}
+                            <DeleteButton onClick={() => this.handleDelete(adventurer._id)}>Delete this Adventurer!</DeleteButton>
+                        </Link>
 
                     </AdventurerStyle>
-                    
-                    
+
+
                 ))}
 
                 {/* The Create Adventurer Form */}
-            <NewAdventurerButton>
-            <AdventurerForm {...this.props}/>
+                <NewAdventurerButton>
+                    <AdventurerForm {...this.props} />
                 </NewAdventurerButton>
 
             </div>

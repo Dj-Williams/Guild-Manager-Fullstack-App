@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 
 class QuestEditForm extends Component {
@@ -32,8 +31,11 @@ class QuestEditForm extends Component {
     // This handles the creation of a new quest w/ the post command. 
     handleUpdate = (event) => {
         let questId = this.props.match.params.questId
-        axios.patch(`/api/quests/${questId}`, this.state.newQuest).then(res => {
-            this.props.history.push(`/quests/${questId}/${res.data._id}`)
+        // Axios.patch is the action, .then is what happens after its finished with the action!
+        axios.patch(`/api/quests/${questId}`, this.state.newQuest)
+            .then(res => {
+            // This bit of navagates the user to the quest page to see the changes. 
+            this.props.history.push(`/quests`)
         })
         event.preventDefault()
     }
@@ -61,8 +63,9 @@ class QuestEditForm extends Component {
                         <input onChange={this.handleChange} value={this.state.description} type="text" name="description" />
                     </div>
                 
-                <Link to={`/quests`}>
-                <button type="submit">Submit Edits</button>         </Link> 
+                
+                <button type="submit">Submit Edits</button>         
+                
 
                 </form>
 

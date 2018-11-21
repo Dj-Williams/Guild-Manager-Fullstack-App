@@ -7,6 +7,8 @@ import SplashPage from './components/SplashPage';
 import RosterPage from './components/RosterPage';
 import ProfilePage from './components/ProfilePage';
 import QuestEditForm from './components/QuestEditForm';
+import AdventurerEditForm from './components/AdventurerEditForm';
+
 
 class App extends Component {
   render() {
@@ -18,15 +20,14 @@ class App extends Component {
 
           <div>
 
-            {/* ↓ Throwing my Navbar joint in there for good measure! */}
-            <Navbar />
-
             {/* ↓ This ensures that we get the route that we are asking for. */}
             <Switch>
                 
               <Route exact path="/quests" component={QuestPage} />
 
               <Route exact path="/api/quests/:questId" component={QuestEditForm} />
+
+              <Route exact path="/api/edit/adventurers/:adventurerId" component={AdventurerEditForm} />
 
               <Route exact path="/quests/:questId" component={RosterPage} />
 

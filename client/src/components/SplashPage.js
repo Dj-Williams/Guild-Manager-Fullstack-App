@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
+import '../styles.css'
+import { Link } from 'react-router-dom'
 
 
 class SplashPage extends Component {
     render() {
         return (
-            <div>
+            <div className="BigContainer">
 
-                <img src="https://banner2.kisspng.com/20180405/ige/kisspng-ancient-egypt-eye-of-ra-eye-of-horus-egyptian-5ac5e3aba626a4.0210575315229183156806.jpg" alt=""/>
 
-                <h1>Welcome Back Guildmaster!</h1>
+            <div className="PictureContainer">
+            <img src="http://kikie.k.i.pic.centerblog.net/o/d0f7543f.png" className="CircleBorder" alt=""/>
+
+                <img src="https://static.thenounproject.com/png/27084-200.png" className="SplashPageEyeImage" alt="" />
+            </div>
+                <h1 className="Welcome">Welcome Back Guildmaster!</h1>
+
+            <Link to="/quests">
+            <h2>
+                Enter
+            </h2>
+            </Link>
+
+
             </div>
         );
     }

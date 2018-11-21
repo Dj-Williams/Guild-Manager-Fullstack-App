@@ -1,0 +1,77 @@
+/* ↓ Splash Page Styling ↓ */
+.BigContainer {
+    background-color: #211A1E;
+    width: 100vw;
+    height: 100vh;
+    display: flex ;
+    flex-direction: column ;
+    flex-wrap: wrap ;
+    justify-content: center ;
+    align-items: center ;
+    align-content: center ;
+    border: 10px solid ;
+    border-image: url(http://1.bp.blogspot.com/-H_ltZqdkoGE/TrI8vzm1SAI/AAAAAAAAAFo/JWMKbmkkj5k/s1600/border6.jpg) 20 round
+}
+
+.SplashPageEyeImage {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    box-shadow: -1px -3px 50px 9px rgba(251, 255, 0, 0.945);
+    border: 1px solid rgba(0, 0, 0, 0.015);
+    border-radius: 100px 100px 100px 90px ;
+    background-color: rgb(255, 228, 196);
+    margin-top: 1px;
+    z-index: 2;
+    animation-name: GlowShadow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.Welcome {
+    z-index: 1;
+    color: #E6E49F;
+}
+
+.CircleBorder {
+    z-index: 0;
+    height: 300px;
+    width: 300px;
+    animation-name: CircleBorder;
+    animation-duration: 150s;
+    animation-iteration-count: infinite;
+}
+
+.PictureContainer {
+    display: flex ;
+    flex-direction: wrap ;
+    flex-wrap: wrap ;
+    justify-content: center ;
+    align-items: center ;
+    align-content: center ;
+    
+}
+
+
+@keyframes CircleBorder{
+    0% {
+      transform: rotate(0deg) ;
+    }
+    100% {
+      transform: rotate(360deg) ;
+    }
+  }
+
+  @keyframes GlowShadow{
+    0% {
+      box-shadow: spread 9px ;
+    }
+    50% {
+      box-shadow: spread 49px ;
+      }
+    100% {
+      box-shadow: spread 9px ;
+    }
+  }  
+
+  /* ↑ Splash Page Styling ↑ */
