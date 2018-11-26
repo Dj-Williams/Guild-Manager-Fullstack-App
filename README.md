@@ -7,6 +7,13 @@ The idea behind this app was inspired by the long nights of anguish spent writin
 * Javascript
 * Style Components
 
+#wireframes:
+![wireframe1](https://user-images.githubusercontent.com/43551649/49042110-22bc7f80-f195-11e8-9125-d8adb90c3564.jpg)
+![wireframe2](https://user-images.githubusercontent.com/43551649/49042115-24864300-f195-11e8-8d9d-98c93fb741bc.jpg)
+
+#ERD:
+![project3erd](https://user-images.githubusercontent.com/43551649/49042122-29e38d80-f195-11e8-8b5d-c62dc455b6d8.png)
+
 _THE STACK!_
 
 * MongoDB
